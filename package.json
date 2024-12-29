@@ -4,10 +4,14 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
     "@nx/js": "20.3.0",
+    "@nx/react": "20.3.0",
     "@nx/workspace": "20.3.0",
     "nx": "20.3.0"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   }
 }
