@@ -1,7 +1,7 @@
-import db from '@admin/libs/db';
+import { Box, Title } from "@mantine/core";
 
-import { UsersList } from './_components/list';
-import { Box, Title } from '@mantine/core';
+import db from "@admin/libs/db";
+import { UsersList } from "./_components/list";
 
 export default async function UsersPage() {
   const users = await db.user.findMany({
@@ -13,18 +13,18 @@ export default async function UsersPage() {
           },
         },
         orderBy: {
-          remoteId: 'asc',
+          remoteId: "asc",
         },
       },
     },
     orderBy: {
-      id: 'asc',
+      id: "asc",
     },
   });
 
   const remotes = await db.remote.findMany({
     where: { isActive: true },
-    orderBy: { id: 'asc' },
+    orderBy: { id: "asc" },
   });
 
   return (

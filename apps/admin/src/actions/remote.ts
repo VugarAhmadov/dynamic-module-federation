@@ -1,8 +1,9 @@
-'use server';
+"use server";
 
-import { revalidatePath } from 'next/cache';
-import db from '../libs/db';
-import { IUserRemote } from '@admin/types';
+import { revalidatePath } from "next/cache";
+
+import { IUserRemote } from "@admin/types";
+import db from "../libs/db";
 
 export async function toggleRemoteActiveStatus(
   remoteId: number,
@@ -13,12 +14,12 @@ export async function toggleRemoteActiveStatus(
       where: { id: remoteId },
       data: { isActive },
     });
-    revalidatePath('/remotes');
+    revalidatePath("/remotes");
   } catch (error) {
-    throw new Error('Failed to update remote status');
+    throw new Error("Failed to update remote status");
   }
 }
-type CreateOrEditType = Omit<IUserRemote, 'id'> & {
+type CreateOrEditType = Omit<IUserRemote, "id"> & {
   id: null | number;
 };
 export async function createOrUpdateRemote({
@@ -35,11 +36,11 @@ export async function createOrUpdateRemote({
       await db.remote.create({ data: values });
     }
 
-    revalidatePath('/remotes');
+    revalidatePath("/remotes");
 
-    return 'ok';
+    return "ok";
   } catch (error) {
-    throw new Error('Failed to update remote status');
+    throw new Error("Failed to update remote status");
   }
 }
 
@@ -49,10 +50,10 @@ export async function deleteRemote(id: number) {
       where: { id },
     });
 
-    revalidatePath('/remotes');
+    revalidatePath("/remotes");
 
-    return 'ok';
+    return "ok";
   } catch (error) {
-    throw new Error('Failed to update remote status');
+    throw new Error("Failed to update remote status");
   }
 }

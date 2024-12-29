@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { ReactNode, Suspense } from 'react';
-import { AppShell, Box, LoadingOverlay, Title } from '@mantine/core';
+import { ReactNode, Suspense } from "react";
+import { AppShell, Box, LoadingOverlay, Title } from "@mantine/core";
 
-import { Navigation } from '@admin/components/navigation';
-import { ThemeSwitcher } from '@admin/components/theme-switcher';
+import { Navigation } from "@admin/components/navigation";
+import { ThemeSwitcher } from "@admin/components/theme-switcher";
 
 export function Shell({ children }: { children: ReactNode }) {
   return (
@@ -13,7 +13,7 @@ export function Shell({ children }: { children: ReactNode }) {
       header={{ height: 60 }}
       navbar={{
         width: 300,
-        breakpoint: 'sm',
+        breakpoint: "sm",
       }}
       padding="lg"
     >
@@ -22,13 +22,13 @@ export function Shell({ children }: { children: ReactNode }) {
       <AppShell.Navbar>
         <Box
           style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginBottom: '40px',
-            borderBottom: '1px solid var(--app-shell-border-color)',
-            height: '60px',
-            padding: '0 20px',
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "40px",
+            borderBottom: "1px solid var(--app-shell-border-color)",
+            height: "60px",
+            padding: "0 20px",
           }}
         >
           <Title order={3}>Admin</Title>
@@ -38,9 +38,9 @@ export function Shell({ children }: { children: ReactNode }) {
       </AppShell.Navbar>
 
       <AppShell.Main
-        styles={{ main: { display: 'flex', position: 'relative' } }}
+        styles={{ main: { display: "flex", position: "relative" } }}
       >
-        <Box style={{ position: 'relative', flex: '1' }}>
+        <Box style={{ position: "relative", flex: "1" }}>
           <Suspense fallback={<LoadingOverlay visible />}>{children}</Suspense>
         </Box>
       </AppShell.Main>

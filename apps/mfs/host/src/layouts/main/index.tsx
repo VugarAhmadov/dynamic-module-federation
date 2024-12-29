@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import { AppShell, Box, LoadingOverlay, Title } from "@mantine/core";
+import { Outlet } from "react-router-dom";
 
 import { Navigation } from "./components/navigation";
 import { ThemeSwitcher } from "./components/theme-switcher";
-import { Outlet } from "react-router-dom";
 
 export function MainLayout() {
   return (
@@ -36,7 +36,9 @@ export function MainLayout() {
         <Navigation />
       </AppShell.Navbar>
 
-      <AppShell.Main styles={{ main: { display: "flex", position: "relative" } }}>
+      <AppShell.Main
+        styles={{ main: { display: "flex", position: "relative" } }}
+      >
         <Box style={{ position: "relative", flex: "1" }}>
           <Suspense fallback={<LoadingOverlay visible />}>
             <Outlet />

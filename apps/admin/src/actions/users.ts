@@ -1,7 +1,8 @@
-'use server';
+"use server";
 
-import { revalidatePath } from 'next/cache';
-import db from '../libs/db';
+import { revalidatePath } from "next/cache";
+
+import db from "../libs/db";
 
 export async function updateUserRemotes(
   userId: number,
@@ -51,7 +52,7 @@ export async function updateUserRemotes(
         },
       },
     });
-    revalidatePath('/users');
+    revalidatePath("/users");
   } catch (error) {
     throw new Error(`Failed to update user remotes: ${(error as any).message}`);
   }

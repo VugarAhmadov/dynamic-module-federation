@@ -1,4 +1,4 @@
-import db from '@admin/libs/db';
+import db from "@admin/libs/db";
 
 export async function GET(
   request: Request,
@@ -19,12 +19,12 @@ export async function GET(
           },
         },
         orderBy: {
-          remoteId: 'asc',
+          remoteId: "asc",
         },
       },
     },
     orderBy: {
-      id: 'asc',
+      id: "asc",
     },
   });
 
@@ -34,9 +34,9 @@ export async function GET(
     { data: { ...users, remotes: remotesOnly } },
     {
       headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
       },
     }
   );

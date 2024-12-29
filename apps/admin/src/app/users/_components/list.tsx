@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import { updateUserRemotes } from '@admin/actions/users';
-import { IUser, IUserRemote } from '@admin/types';
-import { MultiSelect, Table } from '@mantine/core';
+import { MultiSelect, Table } from "@mantine/core";
+
+import { updateUserRemotes } from "@admin/actions/users";
+import { IUser, IUserRemote } from "@admin/types";
 
 export function UsersList({
   users,

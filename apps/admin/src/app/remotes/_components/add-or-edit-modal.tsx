@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
-import { createOrUpdateRemote } from '@admin/actions/remote';
-import { IUserRemote } from '@admin/types';
-import { Button, Flex, Modal, TextInput } from '@mantine/core';
-import { useForm } from '@mantine/form';
-import { useEffect } from 'react';
-import { notifications } from '@mantine/notifications';
+import { useEffect } from "react";
+import { Button, Flex, Modal, TextInput } from "@mantine/core";
+import { useForm } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
 
-type FormType = Omit<IUserRemote, 'id' | 'isActive'>;
+import { createOrUpdateRemote } from "@admin/actions/remote";
+import { IUserRemote } from "@admin/types";
+
+type FormType = Omit<IUserRemote, "id" | "isActive">;
 
 export function AddOrEditModal({
   opened,
@@ -20,12 +21,12 @@ export function AddOrEditModal({
 }) {
   const form = useForm({
     initialValues: {
-      label: '',
-      scope: '',
-      moduleName: '',
-      url: '',
-      frontUrl: '',
-      routePath: '',
+      label: "",
+      scope: "",
+      moduleName: "",
+      remoteUrl: "",
+      frontUrl: "",
+      routePath: "",
     },
   });
 
@@ -46,10 +47,10 @@ export function AddOrEditModal({
       id: data ? data.id : null,
     });
 
-    if (result === 'ok') {
+    if (result === "ok") {
       notifications.show({
-        title: 'Success',
-        message: data ? 'Edited successfully' : 'Created successfully',
+        title: "Success",
+        message: data ? "Edited successfully" : "Created successfully",
       });
       onClose();
     }
@@ -59,42 +60,42 @@ export function AddOrEditModal({
     <Modal
       opened={opened}
       onClose={onClose}
-      title={data ? 'Edit Remote' : 'Add Remote'}
+      title={data ? "Edit Remote" : "Add Remote"}
       centered
     >
       <form
-        style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
+        style={{ display: "flex", flexDirection: "column", gap: "20px" }}
         onSubmit={form.onSubmit(processForm)}
       >
         <TextInput
           label="Scope"
-          {...form.getInputProps('scope')}
-          key={form.key('scope')}
+          {...form.getInputProps("scope")}
+          key={form.key("scope")}
         />
         <TextInput
           label="Module name"
-          {...form.getInputProps('moduleName')}
-          key={form.key('moduleName')}
+          {...form.getInputProps("moduleName")}
+          key={form.key("moduleName")}
         />
         <TextInput
-          label="URL"
-          {...form.getInputProps('url')}
-          key={form.key('url')}
+          label="Remote Entry URL"
+          {...form.getInputProps("remoteUrl")}
+          key={form.key("remoteUrl")}
         />
         <TextInput
           label="Front URL"
-          {...form.getInputProps('frontUrl')}
-          key={form.key('frontUrl')}
+          {...form.getInputProps("frontUrl")}
+          key={form.key("frontUrl")}
         />
         <TextInput
           label="Route Path"
-          {...form.getInputProps('routePath')}
-          key={form.key('routePath')}
+          {...form.getInputProps("routePath")}
+          key={form.key("routePath")}
         />
         <TextInput
           label="Label/Title"
-          {...form.getInputProps('label')}
-          key={form.key('label')}
+          {...form.getInputProps("label")}
+          key={form.key("label")}
         />
         <Flex justify="space-between" gap="lg" mt="20px">
           <Button variant="default" fullWidth onClick={onClose}>

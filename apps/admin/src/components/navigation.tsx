@@ -3,7 +3,6 @@
 import { NavLink } from "@mantine/core";
 import { IconAbacus, IconUsers } from "@tabler/icons-react";
 import Link from "next/link";
-
 import { useSelectedLayoutSegment } from "next/navigation";
 
 export function Navigation() {

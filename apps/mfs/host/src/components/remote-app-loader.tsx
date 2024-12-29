@@ -1,8 +1,8 @@
 import {
   loadRemote,
   registerRemotes,
-} from '@module-federation/enhanced/runtime';
-import { useSuspenseQuery } from '@tanstack/react-query';
+} from "@module-federation/enhanced/runtime";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 const loadRemoteComponent = async ({
   url,
@@ -20,7 +20,7 @@ const loadRemoteComponent = async ({
     },
   ]);
   const Module = await loadRemote<any>(`${scope}/${moduleName}`, {
-    from: 'runtime',
+    from: "runtime",
   }).then((data) => data.default);
   return Module;
 };

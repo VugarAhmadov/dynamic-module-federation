@@ -1,15 +1,15 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 import {
   ColorSchemeScript,
-  MantineProvider,
   mantineHtmlProps,
-} from '@mantine/core';
-import { Notifications } from '@mantine/notifications';
+  MantineProvider,
+} from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 
-import { Shell } from '@admin/components/shell';
+import { Shell } from "@admin/components/shell";
 
-import '@mantine/core/styles.css';
-import '@mantine/notifications/styles.css';
+import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

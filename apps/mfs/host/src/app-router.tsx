@@ -1,14 +1,13 @@
-import { Suspense } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
+import { Suspense } from "react";
+import { LoadingOverlay } from "@mantine/core";
+import { ErrorBoundary } from "react-error-boundary";
+import { Route, Routes } from "react-router-dom";
 
-import { Route, Routes } from 'react-router-dom';
-
-import { MainLayout } from './layouts/main';
-import { ErrorFallback } from './components/error-fallback';
-import { NotFound } from './components/not-found';
-import { RemoteAppLoader } from './components/remote-app-loader';
-import { useUser } from './hooks/use-user';
-import { LoadingOverlay } from '@mantine/core';
+import { ErrorFallback } from "./components/error-fallback";
+import { NotFound } from "./components/not-found";
+import { RemoteAppLoader } from "./components/remote-app-loader";
+import { useUser } from "./hooks/use-user";
+import { MainLayout } from "./layouts/main";
 
 export function AppRouter() {
   const { data, isLoading } = useUser();
