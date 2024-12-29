@@ -1,0 +1,24 @@
+{
+  "name": "remote-1",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/mfs/remote-1/src",
+  "projectType": "application",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project remote-1 --web",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "rsbuild dev --open",
+        "cwd": "apps/mfs/remote-1"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "rsbuild build --open",
+        "cwd": "apps/mfs/remote-1"
+      }
+    }
+  }
+}
