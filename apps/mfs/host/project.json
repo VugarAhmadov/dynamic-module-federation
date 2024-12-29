@@ -16,7 +16,7 @@
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "rsbuild build --open",
+        "command": "rsbuild build",
         "cwd": "apps/mfs/host"
       }
     }
