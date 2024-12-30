@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@admin/*": ["apps/admin/src/*"]
+      "@admin/*": ["apps/admin/src/*"],
+      "@host/*": ["apps/mfs/host/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

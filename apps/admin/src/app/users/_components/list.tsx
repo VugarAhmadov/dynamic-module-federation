@@ -35,7 +35,7 @@ export function UsersList({
             <Table.Td>{user.fullname}</Table.Td>
             <Table.Td>{user.username}</Table.Td>
             <Table.Td>{user.password}</Table.Td>
-            <Table.Td>
+            <Table.Td width="400px">
               <MultiSelect
                 data={remotes.map((remote) => ({
                   value: remote.id.toString(),

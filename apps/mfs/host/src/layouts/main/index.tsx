@@ -1,11 +1,28 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { AppShell, Box, LoadingOverlay, Title } from "@mantine/core";
-import { Outlet } from "react-router-dom";
+import { useCookies } from "react-cookie";
+import { Outlet, useNavigate } from "react-router-dom";
 
+import { useUser } from "@host/hooks/use-user";
 import { Navigation } from "./components/navigation";
 import { ThemeSwitcher } from "./components/theme-switcher";
 
 export function MainLayout() {
+  const [cookies] = useCookies(["isLoggedIn"]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!cookies.isLoggedIn) {
+      navigate("/login");
+    }
+  }, []);
+
+  const { isPending } = useUser();
+
+  if (isPending) {
+    return <LoadingOverlay visible={true} overlayProps={{ blur: 2 }} />;
+  }
+
   return (
     <AppShell
       layout="alt"

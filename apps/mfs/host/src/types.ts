@@ -11,7 +11,7 @@ export interface IUserRemote {
   scope: string;
   moduleName: string;
   routePath: string;
-  url: string;
+  remoteUrl: string;
   frontUrl: string;
   label: string;
   isActive: boolean;

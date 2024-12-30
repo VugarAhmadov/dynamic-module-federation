@@ -5,17 +5,17 @@ import {
 import { useSuspenseQuery } from "@tanstack/react-query";
 
 const loadRemoteComponent = async ({
-  url,
+  remoteUrl,
   scope,
   moduleName,
 }: {
-  url: string;
+  remoteUrl: string;
   scope: string;
   moduleName: string;
 }) => {
   registerRemotes([
     {
-      entry: url,
+      entry: remoteUrl,
       name: scope,
     },
   ]);
@@ -26,31 +26,32 @@ const loadRemoteComponent = async ({
 };
 
 const useRemote = ({
-  url,
+  remoteUrl,
   scope,
   moduleName,
 }: {
-  url: string;
+  remoteUrl: string;
   scope: string;
   moduleName: string;
 }) => {
   return useSuspenseQuery({
-    queryKey: [url, scope, moduleName],
-    queryFn: async () => await loadRemoteComponent({ url, scope, moduleName }),
+    queryKey: [remoteUrl, scope, moduleName],
+    queryFn: async () =>
+      await loadRemoteComponent({ remoteUrl, scope, moduleName }),
     staleTime: Infinity,
   });
 };
 
 export function RemoteAppLoader({
-  url,
+  remoteUrl,
   scope,
   moduleName,
 }: {
-  url: string;
+  remoteUrl: string;
   scope: string;
   moduleName: string;
 }) {
-  const { data: Component } = useRemote({ url, scope, moduleName });
+  const { data: Component } = useRemote({ remoteUrl, scope, moduleName });
 
   return <Component />;
 }

@@ -52,6 +52,7 @@ export function AddOrEditModal({
         title: "Success",
         message: data ? "Edited successfully" : "Created successfully",
       });
+      form.reset();
       onClose();
     }
   };

@@ -11,7 +11,14 @@ export default defineConfig({
     pluginModuleFederation({
       name: "host",
       shareStrategy: "loaded-first",
-      shared: ["react", "react-dom"],
+      shared: {
+        react: { singleton: true, requiredVersion: "19.0.0" },
+        "react-dom": { singleton: true, requiredVersion: "19.0.0" },
+        "react-router-dom": {
+          singleton: true,
+          requiredVersion: "6.11.2",
+        },
+      },
     }),
   ],
 
