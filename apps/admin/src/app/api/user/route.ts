@@ -1,12 +1,12 @@
+import { getSession } from "@admin/libs/auth";
 import db from "@admin/libs/db";
 
-export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function GET(request: Request) {
+  const session = await getSession();
+
   const users = await db.user.findFirst({
     where: {
-      id: Number((await params).id),
+      id: session.user.id,
     },
     include: {
       remotes: {
@@ -34,9 +34,10 @@ export async function GET(
     { data: { ...users, remotes: remotesOnly } },
     {
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "http://localhost:4200",
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Credentials": "true",
       },
     }
   );

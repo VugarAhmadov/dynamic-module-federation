@@ -47,7 +47,6 @@ export async function POST(request: Request) {
   return Response.json("Successfully logged in", {
     status: 200,
     headers: {
-      // "Set-Cookie": `session=${session}`,
       "Access-Control-Allow-Origin": "http://localhost:4200",
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",

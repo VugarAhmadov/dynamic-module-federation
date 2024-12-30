@@ -4,6 +4,7 @@ import { useCookies } from "react-cookie";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import { useUser } from "@host/hooks/use-user";
+import { Header } from "./components/header";
 import { Navigation } from "./components/navigation";
 import { ThemeSwitcher } from "./components/theme-switcher";
 
@@ -33,7 +34,9 @@ export function MainLayout() {
       }}
       padding="md"
     >
-      <AppShell.Header />
+      <AppShell.Header>
+        <Header />
+      </AppShell.Header>
 
       <AppShell.Navbar>
         <Box

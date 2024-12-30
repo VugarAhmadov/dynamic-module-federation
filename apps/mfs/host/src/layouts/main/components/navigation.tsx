@@ -1,11 +1,11 @@
 import { NavLink } from "@mantine/core";
 import { IconAbacus } from "@tabler/icons-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-import { useUser } from "../../../hooks/use-user";
+import { useUser } from "@host/hooks/use-user";
 
 export function Navigation() {
-  const location = useLocation();
+  const { frontUrl } = useParams();
 
   const { data } = useUser();
 
@@ -20,7 +20,7 @@ export function Navigation() {
           leftSection={
             <IconAbacus style={{ width: "1.25rem", height: "1.25rem" }} />
           }
-          active={location.pathname.split("/")[1] === remote.frontUrl}
+          active={`/${frontUrl}` === remote.frontUrl}
         />
       ))}
     </nav>
