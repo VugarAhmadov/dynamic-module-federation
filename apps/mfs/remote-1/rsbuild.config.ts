@@ -22,6 +22,8 @@ export default defineConfig({
           singleton: true,
           requiredVersion: "6.11.2",
         },
+        "@mantine/core": { singleton: true, requiredVersion: "7.15.2" },
+        "@mantine/hooks": { singleton: true, requiredVersion: "7.15.2" },
       },
     }),
   ],
