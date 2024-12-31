@@ -15,7 +15,13 @@ export default defineConfig({
         "./App": "./src/app.tsx",
       },
       dts: false,
-      shared: ["react", "react-dom"],
+      shared: [
+        "react",
+        "react-dom",
+        "react-router-dom",
+        "@mantine/core",
+        "@mantine/hooks",
+      ],
     }),
   ],
   source: {

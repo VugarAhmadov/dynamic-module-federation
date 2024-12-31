@@ -15,16 +15,13 @@ export default defineConfig({
         "./App": "./src/app.tsx",
       },
       dts: false,
-      shared: {
-        react: { singleton: true, requiredVersion: "19.0.0" },
-        "react-dom": { singleton: true, requiredVersion: "19.0.0" },
-        "react-router-dom": {
-          singleton: true,
-          requiredVersion: "6.11.2",
-        },
-        "@mantine/core": { singleton: true, requiredVersion: "7.15.2" },
-        "@mantine/hooks": { singleton: true, requiredVersion: "7.15.2" },
-      },
+      shared: [
+        "react",
+        "react-dom",
+        "react-router-dom",
+        "@mantine/core",
+        "@mantine/hooks",
+      ],
     }),
   ],
   source: {

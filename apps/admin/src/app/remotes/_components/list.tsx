@@ -51,7 +51,6 @@ export function RemotesList({ remotes }: { remotes: IUserRemote[] }) {
             <Table.Th>Module name</Table.Th>
             <Table.Th>Remote Entry URL</Table.Th>
             <Table.Th>Front URL</Table.Th>
-            <Table.Th>Route path</Table.Th>
             <Table.Th style={{ textAlign: "center" }}>Active</Table.Th>
             <Table.Th style={{ textAlign: "center" }}>Actions</Table.Th>
           </Table.Tr>
@@ -65,7 +64,6 @@ export function RemotesList({ remotes }: { remotes: IUserRemote[] }) {
               <Table.Td>{remote.moduleName}</Table.Td>
               <Table.Td>{remote.remoteUrl}</Table.Td>
               <Table.Td>{remote.frontUrl}</Table.Td>
-              <Table.Td>{remote.routePath}</Table.Td>
               <Table.Td>
                 <Switch
                   checked={remote.isActive}

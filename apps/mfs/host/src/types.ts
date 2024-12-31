@@ -10,7 +10,6 @@ export interface IUserRemote {
   id: number;
   scope: string;
   moduleName: string;
-  routePath: string;
   remoteUrl: string;
   frontUrl: string;
   label: string;

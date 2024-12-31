@@ -28,8 +28,8 @@ export default function LoginPage() {
 
   const { mutate, isPending, error } = useMutation({
     mutationFn: authService.login,
-    onSuccess: () => {
-      window.location.href = "http://localhost:4200/";
+    onSuccess: (data) => {
+      window.location.href = `http://localhost:4200${data.redirectUrl}`;
     },
   });
 

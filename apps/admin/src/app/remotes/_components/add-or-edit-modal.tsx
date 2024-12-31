@@ -26,7 +26,6 @@ export function AddOrEditModal({
       moduleName: "",
       remoteUrl: "",
       frontUrl: "",
-      routePath: "",
     },
   });
 
@@ -87,11 +86,6 @@ export function AddOrEditModal({
           label="Front URL"
           {...form.getInputProps("frontUrl")}
           key={form.key("frontUrl")}
-        />
-        <TextInput
-          label="Route Path"
-          {...form.getInputProps("routePath")}
-          key={form.key("routePath")}
         />
         <TextInput
           label="Label/Title"

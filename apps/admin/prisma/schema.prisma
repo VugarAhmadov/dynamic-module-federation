@@ -22,7 +22,6 @@ model Remote {
   id         Int           @id @default(autoincrement())
   scope      String
   moduleName String        @default("App")
-  routePath  String
   frontUrl   String
   remoteUrl  String
   label      String

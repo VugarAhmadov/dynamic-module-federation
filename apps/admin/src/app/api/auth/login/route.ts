@@ -8,6 +8,30 @@ export async function POST(request: Request) {
 
   const user = await db.user.findFirst({
     where: { username: req.username, password: req.password },
+    include: {
+      remotes: {
+        where: {
+          remote: {
+            isActive: true,
+          },
+        },
+        orderBy: {
+          remoteId: "asc",
+        },
+        include: {
+          remote: {
+            select: {
+              id: true,
+              frontUrl: true,
+              // include any other fields you need
+            },
+          },
+        },
+      },
+    },
+    orderBy: {
+      id: "asc",
+    },
   });
 
   if (!user) {
@@ -44,13 +68,19 @@ export async function POST(request: Request) {
     path: "/",
   });
 
-  return Response.json("Successfully logged in", {
-    status: 200,
-    headers: {
-      "Access-Control-Allow-Origin": "http://localhost:4200",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-      "Access-Control-Allow-Credentials": "true",
+  return Response.json(
+    {
+      message: "Successfully logged in",
+      redirectUrl: user.remotes[0]?.remote.frontUrl ?? "/",
     },
-  });
+    {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:4200",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Credentials": "true",
+      },
+    }
+  );
 }
