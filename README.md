@@ -1,96 +1,94 @@
 # DynamicModuleFederation
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+This workspace demonstrates Dynamic Module Federation using Nx and React. It showcases how to implement runtime module federation where remote modules are loaded dynamically based on configuration.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+## Key Features
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+- Dynamic loading of federated modules at runtime
+- Centralized configuration management (Admin) for remote apps
+- Multiple independent applications working together
+- Built with Nx for optimal monorepo management
 
-## Run tasks
+## Project Structure
 
-To run tasks with Nx use:
-
-```sh
-npx nx <target> <project-name>
+```
+apps/
+  ├── admin/            # Admin application for managing remote configurations
+  └── mfs/
+      ├── host/         # Host application that dynamically loads remote modules
+      ├── remote-1/     # First remote application
+      └── remote-2/     # Second remote application
+      └── remote-3/     # Third remote application
 ```
 
-For example:
+<br>
+
+## Module Federation Setup
+
+To run the federated applications:
 
 ```sh
-npx nx build myproject
+# Install nx globaly
+sudo npm install -g nx
+
+# Install packages
+pnpm i
+
+# change .env.sample to .env
+mv .env.sample .env
+
+# Start admin application
+nx serve admin
+
+# Start host application
+nx serve host
+
+# Start all remotes
+nx run-many -t serve remote-1 remote-2 remote-3
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+<br>
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Admin application
 
-## Add new projects
+The admin application will be available at [http://localhost:8080](http://localhost:8080)
+<br>
+<br>
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+### Host apllication
 
-To install a new plugin you can use the `nx add` command. Here's an example of adding the React plugin:
-```sh
-npx nx add @nx/react
-```
+The host application will be available at [http://localhost:4200](http://localhost:4200)
 
-Use the plugin's generator to create new projects. For example, to create a new React app or library:
+<br>
 
-```sh
-# Generate an app
-npx nx g @nx/react:app demo
+we have 2 users for test
+| Username | Password |
+| -------- | ------- |
+| vugar | test123 |
+| test | test123 |
+<br>
 
-# Generate a library
-npx nx g @nx/react:lib some-lib
-```
+To add new remote to host application
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+- go to this url [http://localhost:8080/remotes](http://localhost:8080/remotes).
+- click to `Add new remote` button
+- fill the form and submit
+- go to this url [http://localhost:8080/users](http://localhost:8080/users).
+- add remote to user-remotes
+- copy `remote-3` folder and change its name to whatever you named when you create the remote
+- in `rsbuild.config.ts` file change `name` with Scope that you provided.
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Screenshots
 
-## Set up CI!
+Admin application
 
-### Step 1
+<img src="./screenshots/SCR-20241231-frng.png" />
+<img src="./screenshots/SCR-20241231-frot.png" />
+<img src="./screenshots/SCR-20241231-frqj.png" />
 
-To connect to Nx Cloud, run the following command:
+Host application - with `vugar` user
+<img src="./screenshots/SCR-20241231-foxc.png" />
+<img src="./screenshots/SCR-20241231-fozh.png" />
 
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Host application - with `test` user
+<img src="./screenshots/SCR-20241231-frkp.png" />

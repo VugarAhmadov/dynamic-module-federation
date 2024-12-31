@@ -1,8 +1,20 @@
 import { getSession } from "@admin/libs/auth";
 import db from "@admin/libs/db";
 
-export async function GET(request: Request) {
+export async function GET() {
   const session = await getSession();
+
+  if (!session) {
+    return Response.json("Session not found", {
+      status: 400,
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:4200",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Credentials": "true",
+      },
+    });
+  }
 
   const users = await db.user.findFirst({
     where: {
