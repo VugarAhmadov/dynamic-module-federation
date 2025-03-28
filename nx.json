@@ -20,12 +20,7 @@
         "typecheckTargetName": "typecheck"
       }
     },
-    {
-      "plugin": "@nx/eslint/plugin",
-      "options": {
-        "targetName": "lint"
-      }
-    },
+    { "plugin": "@nx/eslint/plugin", "options": { "targetName": "lint" } },
     {
       "plugin": "@nx/next/plugin",
       "options": {
@@ -45,19 +40,10 @@
         "linter": "eslint",
         "bundler": "rsbuild"
       },
-      "component": {
-        "style": "css"
-      },
-      "library": {
-        "style": "css",
-        "linter": "eslint"
-      }
+      "component": { "style": "css" },
+      "library": { "style": "css", "linter": "eslint" }
     },
-    "@nx/next": {
-      "application": {
-        "style": "css",
-        "linter": "eslint"
-      }
-    }
-  }
+    "@nx/next": { "application": { "style": "css", "linter": "eslint" } }
+  },
+  "nxCloudId": "67e6bfa031e3c5e9b6f156a8"
 }
